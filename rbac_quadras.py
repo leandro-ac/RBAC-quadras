@@ -27,3 +27,14 @@ RBAC_ROLES = {
         'gerenciar_usuarios': True
     }
 }
+
+# Classe que representa um usuário no sistema
+class Usuario:
+    def __init__(self, nome, papel):
+        # Inicializa o usuário com um nome e um papel
+        self.nome = nome
+        self.papel = papel
+
+    def tem_permissao(self, acao):
+        # Verifica se o usuário tem permissão para realizar uma ação específica
+        return RBAC_ROLES[self.papel].get(acao, False)
