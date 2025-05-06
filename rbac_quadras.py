@@ -61,3 +61,28 @@ class SistemaQuadras:
                     print(f"{nome_usuario} Não Possui permissão para {acao}.")
                 return
         print(f"Usuário {nome_usuario} Não encontrado.")
+
+# Função principal para demonstrar o uso do sistema
+def main():
+    # Cria uma instância do sistema
+    sistema = SistemaQuadras()
+
+    #ctrineAdiciona usuários com diferentes papéis
+    sistema.adicionar_usuario("Neymar", "Jogador")
+    sistema.adicionar_usuario("Lucas", "Secretario")
+    sistema.adicionar_usuario("Leandro", "Administrador")
+
+    # Testa permissões para diferentes ações
+    print("\nTestando permissões:")
+    sistema.verificar_acesso("Neymar", "agendar_quadra")
+    sistema.verificar_acesso("Neymar", "gerenciar_manutencao")
+    sistema.verificar_acesso("Lucas", "gerenciar_agendamentos")
+    sistema.verificar_acesso("Lucas", "gerenciar_usuarios")
+    sistema.verificar_acesso("Leandro", "gerenciar_usuarios")
+    sistema.verificar_acesso("Leandro", "visualizar_quadras_disponiveis")
+
+    # Testa um usuário inexistente
+    sistema.verificar_acesso("Edelberto", "agendar_quadra")
+
+if __name__ == "__main__":
+    main()
